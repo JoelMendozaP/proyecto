@@ -11,17 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WellcomeComtroller@inicio');
+
 
 Auth::routes();
 Route::get('/venta', 'HomeController@feria');
-//------------------------------------ferias----------------------------------------
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('feria', 'HomeController@feria');
-Route::post('/home', 'FeriaController@store')->name('ferias.store');
 
+//------------------------------------ferias----------------------------------------
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('feria', 'HomeController@feria')->name('feria');
+Route::post('/home', 'FeriaController@store')->name('ferias.store');
+//Stand editar
+Route::get('/feria/editar/{id}', 'HomeController@editar')->name('feria.editar');
+Route::put('/feria/editar/{id}','HomeController@update')->name('ferias.update');
+//Stand eliminar
+Route::delete('/feria/eliminar/{id}','HomeController@eliminar')->name('feria.eliminar');
 
 //------------------------------------Stand-----------------------------------------
 Route::get('/stand', 'StandController@inicio');

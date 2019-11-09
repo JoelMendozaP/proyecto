@@ -8,7 +8,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Material Design Bootstrap -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/fondo.css">
+	<link rel="stylesheet" href="css/fondow.css">
 
 	<script src="librerias/jquery-3.2.1.min.js"></script>
 	<script src="js/funciones.js"></script>

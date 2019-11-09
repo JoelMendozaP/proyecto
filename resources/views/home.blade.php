@@ -5,198 +5,55 @@
     <div class="container">
         <div class="row">
             <!-- textos responsives -->
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                     <div class="card">
                             <div class="card-body">
-                              <h3 class="text-center orange-text" ><b>Registrar Feria</b></h3>
+                              <h3 class="text-center orange-text" ><b>Tus ferias</b></h3>
+                              <a href="{{route('feria')}}" class=" btn btn-rounded text-white purple lighten-2 btn-sm rounded-pill ">Agregar   <i class="fas fa-plus"></i></a>
                               <hr>
-                                
-                              <!-- formulario -->
-                                <!-- Extended material form grid -->
-                                    <form action="{{route('ferias.store')}}" method="POST">
-                                        @csrf
-                                        @if (count($errors)>0) 
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{$error}}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        @endif
-                                        @if (session('mensaje'))
-                                            <div class="alert alert-success">
-                                                {{session('mensaje')}}
-                                            </div>
-                                        @endif
-                                        
-                                        <!-- Grid row -->
-                                        <div class="form-row">
-
-                                            <div class="col-md-12">
-                                                        <!-- Material input -->
-                                                        <div class="md-form form-group">
-                                                        <input type="text" class="form-control" name="nombre">
-                                                        <label>Nombre de la feria</label>
-                                                        </div>
-                                                    </div>    
-                                        <!-- Grid column -->
-                                        <div class="col-md-4">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="date" class="form-control" name="fechaInicio">
-                                            <label>Fecha de Inicio</label>
-                                            </div>
-                                        </div>
-                                        <!-- Grid column -->
-                                    
-                                        <!-- Grid column -->
-                                        <div class="col-md-4">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="date" class="form-control" name="fechaFin">
-                                            <label for="inputPassword4MD">Fecha de Fin</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="time" value="08:00" class="form-control" name="HraInicio">
-                                            <label for="inputPassword4MD">Hora Inicio</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="time" value="18:00" class="form-control" name="HraFin">
-                                            <label for="inputPassword4MD">Hora de Fin</label>
-                                            </div>
-                                        </div>
-                                        <!-- Grid column -->
-                                        </div>
-                                        <!-- Grid row -->
-                                    
-                                        <!-- Grid row -->
-                                        <div class="row">
-                                        <!-- Grid column -->
-                                        <div class="col-md-4">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="Ciudad">
-                                            <label for="inputAddressMD">Ciudad</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="Localidad">
-                                            <label for="inputAddressMD">Localidad</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="Calle">
-                                            <label for="inputAddressMD">Calle o Av.</label>
-                                            </div>
-                                        </div>
-
-                                        
-                                        <!-- Grid column -->
-                                    
-                                        <!-- Grid column -->
-                                        <div class="col-md-12">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="descripcion">
-                                            <label for="inputAddress2MD">Descripcion de la feria</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="objetivo">
-                                            <label for="inputAddress2MD">Objetivo</label>
-                                            </div>
-                                        </div>
-                                        <!-- Grid column -->
-                                        </div>
-                                        <!-- Grid row -->
-                                    
-                                        <!-- Grid row -->
-                                        <div class="form-row">
-                                        <!-- Grid column -->
-                                        <div class="col-md-6">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="number" class="form-control" name="nroStad">
-                                            <label for="inputCityMD">Cantidad de Stands</label>
-                                            </div>
-                                        </div>
-                                        <!-- Grid column -->
-                                    
-                                        <!-- Grid column -->
-                                        <div class="col-md-6">
-                                            <!-- Material input -->
-                                            <div class="md-form form-group">
-                                            <input type="text" class="form-control" name="telefono">
-                                            <label for="inputZipMD">Numero de Referencia</label>
-                                            </div>
-                                        </div>
-                                        <!-- Grid column -->
-                                        </div>
-                                        <!-- Grid row -->
-                                        <div class="form-row text-center">
-                                        <!-- Grid column -->
-                                        <div class="col-md-6">
-                                        <button type="submit" class="btn orange-gradient btn-orange btn-block  my-4">Registrar</button>
-                                        </div>
-                                        <div class="col-md-6 text-right ">
-                                            <br> 
-                                            <a class="btn-floating btn-lg btn-default" data-toggle="modal" data-target=".bd-example-modal-lg "> <i class="fas fa-map-marked-alt"></i></a>
-                                            <!-- Central Modal Medium Danger -->
-                                            <div class="modal fade bd-example-modal-lg" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-notify modal-danger" role="document">
-                                            <!--Content-->
-                                            <div class="modal-content">
-                                                <!--Header-->
-                                                <div class="modal-header">
-                                                <p class="heading lead">Agregar Ubicacion</p>
-
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true" class="white-text">&times;</span>
-                                                </button>
-                                                </div>
-
-                                                <!--Body-->
-                                                <div class="modal-body"  id="map" style="width: 100%; height: 500px">
-                                                
-                                                </div>
-                                                
-                                                <!--Footer-->
-                                                <form action="" method="POST">
-                                                    @csrf
-                                                    <input type="text" id="lat" name="lat" /> 
-                                                    <input type="text" id="lng" name="lng" />
-                                                    <div class="modal-footer justify-content-center">
-
-                                                    <button type="button" class="btn btn-danger btn-block  my-4" data-dismiss="modal">Registrar</button>
-                                                    {{-- <a type="button" class="btn btn-danger waves-effect my-4" data-dismiss="modal">No, thanks</a> --}}
-                                                </form>
-                                                
-                                                </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </form>
-                                  <!-- Extended material form grid -->  
+                              @if (session('mensaje'))
+                                <div class="alert alert-success">
+                                  {{session('mensaje')}}
+                                </div>
+                              @endif
+                              
+                              <div class="table-responsive overflow-auto ">
+                              <table class="table table-hover table-condensed table-sm">
+                                <thead class="thead-dark ">
+                                  <tr>
+                                    <th class="orange-text" scope="col"><h5>#</h5></th>
+                                    <th scope="col"><h6>Nombre</h6></th>
+                                    <th scope="col"><h6>Objetivo</h6></th>
+                                    <th scope="col"><h6>Descripcion</h6></th>
+                                    <th class="text-center" scope="col"><h6>Accion</h6></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($feria as $item)
+                                    <tr>
+                                            <th class="align-middle"scope="row">{{$item->idFeria}}</th>
+                                            <td class="align-middle">{{$item->nombre}}</td>
+                                            <td class="align-middle">{{$item->objetivo}}</td>
+                                            <td class="align-middle">{{$item->descripcion}}</td>
+                                            <td class="text-center">
+                                              <a href="{{route('feria.editar', $item)}}" class="btn btn-rounded text-white blue darken-3 btn-sm rounded-pill">Ediar <i class="fas fa-toggle-off"></i></a>
+                                              <form action="{{route('feria.eliminar', $item)}}" method="POST" class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-rounded text-white red btn-sm remove-first-tr rounded-pill" type="submit">Eliminar <i class="fas fa-eraser"></i></button>
+                                            </form>
+                                            <a href="{{route('feria.editar', $item)}}" class="btn btn-rounded text-white purple lighten-2 btn-sm rounded-pill">Stands <i class="fas fa-toggle-off"></i></a>
+                                            </td>
+                                          </tr> 
+                                    @endforeach
+                                </tbody>
+                              </table>
+                              {{$feria->links()}}
+                            </div>
                             </div>
                           </div>
+                          
             </div>
-            <div class="col-sm-3"></div>
           </div>
     </div>          
   </div>

@@ -58,13 +58,13 @@ class FeriaController extends Controller
         $feriaNueva->save();
 
         //return redirect()->route('stand', ['id' => 1]);
-        return Redirect::to('/stand');
+        //return Redirect::to('/stand');
 
         //$stand = App\Stand::paginate(5);
         //return view('stand',compact('stand'));
         //return view(route('stand', $feriaNueva));
         //return back();
-        //return back()->with('mensaje','Feria Agregada');
+        return back()->with('mensaje','Feria Agregada');
         //$stand = App\Stand::paginate(2);
         //return view(route('stand', $feriaNueva));
     }
