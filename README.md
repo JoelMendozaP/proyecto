@@ -7,7 +7,8 @@ Boostrap y Larabel y el gestor de base de datos MySQL® 5.7. que nos proporciona
 
 # Resultado
 
-Nota: Esta sección puedes verla de manera mas detallada en el pdf dentro de este repositorio(Articulo_Geolocalizacion_Ferias.pdf).
+Nota: Esta sección puedes verla de manera mas detallada en el pdf dentro de este repositorio 
+(Articulo_Geolocalizacion_Ferias.pdf).
 
 
 -Al ingresar en la página este nos da la bienvenida:
