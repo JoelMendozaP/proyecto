@@ -173,7 +173,7 @@ body{
 {
     position: absolute;
     top: 12px;
-    right: -165px;
+    right: -280px;
     margin: 0;
     padding: 8px 16px;
     background: rgba(233, 33, 99, 1);
@@ -185,11 +185,46 @@ body{
 {
     position: absolute;
     top: 12px;
-    left: -165px;
+    left: -280px;
     margin: 0;
     padding: 8px 16px;
     background: rgba(233, 33, 99, 1);
     color: #ffff;
     border-radius: 18px;
     box-shadow: 0 0 0 3px rgba(233, 33, 99, 0.3);
+}
+.timeline .time1
+{
+    position: relative;
+    margin: 50px auto;
+    padding: 40px 0;
+    width: 500px;
+    box-sizing: border-box;
+}
+.timeline ul li:nth-child(odd) .time1
+{
+    float: left;
+    text-align: left;
+    clear: both;
+}
+.timeline ul li:nth-child(even) .time1
+{
+    float: right;
+    text-align: right;
+    clear: both;
+}
+.timeline ul li:nth-child(odd) .time1
+{
+    position: absolute;
+    top: 60px;
+    left: 565px;
+    margin: 0;
+    
+}
+.timeline ul li:nth-child(even) .time1
+{
+    position: absolute;
+    top: 60px;
+    right: 565px;
+    margin: 0;
 }

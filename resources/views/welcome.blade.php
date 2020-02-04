@@ -77,16 +77,81 @@
                         @foreach ($feria as $item)
                         <li>
                             <div class="content">
-                                <h3>{{$item->nombre}}</h3>
-                                <p>{{$item->descripcion}}</p>
-                                <p>{{$item->objetivo}}</p>
+                                <!-- Card -->
+                            <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20%2814%29.jpg);">
+                                {{-- <div class="card card-image" style="background-image: url({{asset('img/feria-dulces.jpg')}});"> --}}
+                                <!-- Content -->
+                                <div class="text-white rounded mb-0 text-center align-items-center rgba-black-strong py-5 px-4">
+                                <div>
+                                    <h5 class="pink-text"><i class="fas fa-chart-pie"></i> Marketing</h5>
+                                    <h3 class="card-title pt-2"><strong>{{$item->nombre}}</strong></h3>
+                                    <p>{{$item->descripcion}}</p><br>
+                                    {{-- <p>{{$item->objetivo}}</p> --}}
+                                    
+                                    <a class="btn-floating btn-lg btn-default" data-toggle="modal" data-target=".bd-example-modal-lg "><h6>Ver Ubicacion  <i class="fas fa-map-marked-alt"></i></h6></a>
+                                    <!-- Central Modal Medium Danger -->
+                                    <div class="modal fade bd-example-modal-lg" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-notify modal-danger" role="document">
+                                    <!--Content-->
+                                    <div class="modal-content">
+                                        <!--Header-->
+                                        <div class="modal-header">
+                                        <p class="heading lead">Ubicacion</p>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true" class="white-text">&times;</span>
+                                        </button>
+                                        </div>
+
+                                        <!--Body-->
+                                        <div class="modal-body"  id="map" style="width: 100%; height: 500px">
+                                        
+                                        </div>
+                                        
+                                        <!--Footer-->
+                                </div></div></div>
+                                <script>
+                                        @foreach ($localizacion as $itemL)
+                                            @if ($item->idLocalizacion==$itemL->idLocalizacion)
+                                                var myLatLng = {lng: {{$itemL->latitud}}, lat: {{$itemL->longitud}}};
+                                            @endif
+                                        @endforeach
+                                        function initMap() {
+                                        
+                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                            zoom: 13,
+                                            center: myLatLng
+                                        });
+                                        var marker = new google.maps.Marker({
+                                            
+                                            position: myLatLng,
+                                            map: map,
+                                            title: '{{$item->nombre}}'
+                                        });
+                                        }
+                                </script>
+                                <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8v_BEnHy5oPO_t9D6IMjmrPiiye2Nyak&callback=initMap">
+                                </script>
+                                </div>
+                            </div>
+                            <!-- Card -->
                             </div>
                             <div class="time">
                                 @foreach ($duracion as $itemD)
                                     @if ($item->idDuracion==$itemD->idDuracion)
-                                        <h4>{{$itemD->fechaInicio}}</h4>
+                                        <h4>Del {{$itemD->fechaInicio}} hasta {{$itemD->fechaFin}}</h4>
                                     @endif
                                 @endforeach
+                                
+                            </div>
+                            <div class="time1">
+                                <h6><strong>Objetivo</strong></h6>
+                                <h6>{{$item->objetivo}}</h6>
+                                <h6><strong>Cantidad de expositores:</strong> {{$item->cantStand}}</h6>
+                                <h6><strong>Localizacion:</strong> {{$item->ciudad}}, {{$item->localidad}} {{$item->calle}}</h6>
+                                <h6><strong>Contacto:</strong> {{$item->telefono}}</h6>
                             </div>
                         </li>
                         @endforeach
@@ -94,6 +159,5 @@
                     </ul>
                 </div>
          </article>
-            
       </section>
 @endsection

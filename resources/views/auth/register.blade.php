@@ -5,13 +5,14 @@
     <div class="container">
         <div class="row">
             <!-- textos responsives -->
-            <div class="col-md-6 text-white">
-            <br>
-            <h1 class="h1-responsive d-none d-md-block">Lorem, ipsum dolor.</h1>
+            <div class="col-md-6 text-white" >
+            <br><br><br><br><br>
+            <h1 class="h1-responsive d-none d-md-block">FERIAS EN LA PAZ BOLIVIA</h1>
             <hr class="bg-light">
-            <p class="h4-responsive text-center text-md-left">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat eligendi architecto aspernatur. Eos, possimus accusantium ut ad tempore modi blanditiis voluptatem, vero, nesciunt vitae laudantium? Eaque nihil possimus beatae voluptate.</p>
-              <div class="text-center text-md-left">
-                <button class="btn btn-orange btn-lg">continuar
+            <h5 class=" text-left">Bienvenido/a a nuestra página web nuestro hogar en el mundo digital.</h5>
+            <h5 class=" text-left">Aqui puedes Registrarte para crear e informarte de ferias celebradas en la ciudad de La Paz y El Alto</h5>  
+            <div class="text-center text-md-left">
+                <button class="btn btn-orange btn-lg">Ver Ferias
                   <i class="fas fa-play ml-2"></i>
                </button>
               </div>

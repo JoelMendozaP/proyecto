@@ -10,6 +10,7 @@
                     <div class="card">
                             <div class="card-body">
                               <h3 class="text-center orange-text" ><b>Editar Feria</b></h3>
+                              <a href="{{route('home')}}" class=" btn btn-rounded text-white purple lighten-2 btn-sm rounded-pill ">Tus Ferias   <i class="fas fa-plus"></i></a>
                               <hr>
                               <!-- formulario -->
                                 <!-- Extended material form grid -->
@@ -187,6 +188,62 @@
                                                     {{-- <a type="button" class="btn btn-danger waves-effect my-4" data-dismiss="modal">No, thanks</a> --}}
                                                 </form>
                                                 
+                                                <script>
+                                                    var marker;          
+                                                    var coords = {};    
+                                                    initMap = function () 
+                                                    {
+                                                    
+                                                            navigator.geolocation.getCurrentPosition(
+                                                              function (position){
+                                                                coords =  {
+                                                                  lng: position.coords.longitude,
+                                                                  lat: position.coords.latitude
+                                                                };
+                                                                setMapa(coords);
+                                                                
+                                                               
+                                                              },function(error){console.log(error);});
+                                                        
+                                                    }
+                                                       
+                                                    
+                                                    function setMapa (coords)
+                                                    {   
+                                                          var map = new google.maps.Map(document.getElementById('map'),
+                                                          {
+                                                            zoom: 13,
+                                                            center:new google.maps.LatLng({{$localizacion->longitud}},{{$localizacion->latitud}}),
+                                                    
+                                                          });
+                                                    
+                                                          marker = new google.maps.Marker({
+                                                            map: map,
+                                                            draggable: true,
+                                                            animation: google.maps.Animation.DROP,
+                                                            position: new google.maps.LatLng({{$localizacion->longitud}},{{$localizacion->latitud}}),
+                                                    
+                                                          });
+                                                          marker.addListener('click', toggleBounce);
+                                                          
+                                                          marker.addListener( 'dragend', function (event)
+                                                          {
+                                                            document.getElementById("lat").value = this.getPosition().lat();
+                                                            document.getElementById("lng").value = this.getPosition().lng();
+                                                          });
+                                                        }
+                                                        function toggleBounce() {
+                                                        if (marker.getAnimation() !== null) {
+                                                            marker.setAnimation(null);
+                                                        } else {
+                                                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                                                        }
+                                                        }
+                                                    </script>
+                                                  <script async defer
+                                                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8v_BEnHy5oPO_t9D6IMjmrPiiye2Nyak&callback=initMap">
+                                                  </script>
+
                                                 </div>
                                             </div>
                                         </div>

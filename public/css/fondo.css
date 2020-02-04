@@ -77,7 +77,9 @@ body{
 }
 .gris{
     background: rgba(0, 0, 0, 0.199);
+    color: #ffff;
 }
 .top-nav-collapse{
     background: rgba(0, 0, 0, 0.733) !important;
+    color: #ffff;
 }

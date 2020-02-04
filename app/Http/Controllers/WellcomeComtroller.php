@@ -10,6 +10,7 @@ class WellcomeComtroller extends Controller
     public function inicio(){
         $feria = App\feria::all();
         $duracion =App\Duracion::all();
-        return view('welcome',compact('feria','duracion'));
+        $localizacion = App\Localizacion::all();
+        return view('welcome',compact('feria','duracion','localizacion'));
     }
 }

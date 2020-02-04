@@ -10,6 +10,7 @@
                     <div class="card">
                             <div class="card-body">
                               <h3 class="text-center orange-text" ><b>Registrar Feria</b></h3>
+                              <a href="{{route('home')}}" class=" btn btn-rounded text-white purple lighten-2 btn-sm rounded-pill ">Tus Ferias   <i class="fas fa-plus"></i></a>
                               <hr>
                                 
                               <!-- formulario -->
@@ -170,22 +171,76 @@
                                                     <span aria-hidden="true" class="white-text">&times;</span>
                                                 </button>
                                                 </div>
-
+                                                
                                                 <!--Body-->
                                                 <div class="modal-body"  id="map" style="width: 100%; height: 500px">
-                                                
                                                 </div>
                                                 
                                                 <!--Footer-->
-                                                <form action="" method="POST">
+                                                <form  action="" method="POST">
                                                     @csrf
-                                                    <input type="text" id="lat" name="lat" /> 
-                                                    <input type="text" id="lng" name="lng" />
+                                                    <input class="invisible" type="text" id="lat" name="lat" /> 
+                                                    <input class="invisible" type="text" id="lng" name="lng" />
                                                     <div class="modal-footer justify-content-center">
 
                                                     <button type="button" class="btn btn-danger btn-block  my-4" data-dismiss="modal">Registrar</button>
                                                     {{-- <a type="button" class="btn btn-danger waves-effect my-4" data-dismiss="modal">No, thanks</a> --}}
                                                 </form>
+                                                <script>
+                                                    var marker;          
+                                                    var coords = {};    
+                                                    initMap = function () 
+                                                    {
+                                                    
+                                                            navigator.geolocation.getCurrentPosition(
+                                                              function (position){
+                                                                coords =  {
+                                                                  lng: position.coords.longitude,
+                                                                  lat: position.coords.latitude
+                                                                };
+                                                                setMapa(coords);
+                                                                
+                                                               
+                                                              },function(error){console.log(error);});
+                                                        
+                                                    }
+                                                       
+                                                    
+                                                    function setMapa (coords)
+                                                    {   
+                                                          var map = new google.maps.Map(document.getElementById('map'),
+                                                          {
+                                                            zoom: 13,
+                                                            center:new google.maps.LatLng(coords.lat,coords.lng),
+                                                    
+                                                          });
+                                                    
+                                                          marker = new google.maps.Marker({
+                                                            map: map,
+                                                            draggable: true,
+                                                            animation: google.maps.Animation.DROP,
+                                                            position: new google.maps.LatLng(coords.lat,coords.lng),
+                                                    
+                                                          });
+                                                          marker.addListener('click', toggleBounce);
+                                                          
+                                                          marker.addListener( 'dragend', function (event)
+                                                          {
+                                                            document.getElementById("lat").value = this.getPosition().lat();
+                                                            document.getElementById("lng").value = this.getPosition().lng();
+                                                          });
+                                                        }
+                                                        function toggleBounce() {
+                                                        if (marker.getAnimation() !== null) {
+                                                            marker.setAnimation(null);
+                                                        } else {
+                                                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                                                        }
+                                                        }
+                                                    </script>
+                                                  <script async defer
+                                                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8v_BEnHy5oPO_t9D6IMjmrPiiye2Nyak&callback=initMap">
+                                                  </script>
                                                 
                                                 </div>
                                             </div>
